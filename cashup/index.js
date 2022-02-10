@@ -1,8 +1,15 @@
 const express = require('express')
 const app = express()
 
+app.set('view engine', 'ejs')
+
+app.use((req, res, next) => {
+  console.log("request", req)
+  next()
+})
+
 app.get('/', (req,res) => {
-  res.send('cashup')
+  res.render('index', {})
 })
 
 app.listen(3001, (err) => {
